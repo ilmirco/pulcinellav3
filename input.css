@@ -1,0 +1,11 @@
+﻿@import "tailwindcss";
+
+@theme {
+  --color-brand-green: #1A6B2A;
+  --color-brand-red: #CC1515;
+  --color-brand-black: #111111;
+  --color-brand-light: #FAFAF5;
+  --color-brand-gray: #333333;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lato", sans-serif;
+}
