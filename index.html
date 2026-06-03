@@ -15,7 +15,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     
     <!-- Local Tailwind CSS -->
-    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="output.css?v=2">
     
     <style>
         body {
@@ -69,10 +69,10 @@
                     
                     <!-- Language Switcher -->
                     <select id="lang-selector" onchange="switchLanguage(this.value)" aria-label="Seleziona la lingua" class="bg-transparent text-brand-black border border-gray-300 text-xl rounded-md focus:ring-brand-green focus:border-brand-green block p-1.5 cursor-pointer outline-none shadow-sm">
-                        <option value="it">🇮🇹 Italiano</option>
-                        <option value="en">🇬🇧 English</option>
-                        <option value="fr">🇫🇷 Français</option>
-                        <option value="de">🇩🇪 Deutsch</option>
+                        <option value="it">🇮🇹 IT</option>
+                        <option value="en">🇬🇧 EN</option>
+                        <option value="fr">🇫🇷 FR</option>
+                        <option value="de">🇩🇪 DE</option>
                     </select>
                 </div>
             </div>
@@ -1152,6 +1152,26 @@
                 switchLanguage(savedLang);
             }
         });
+
+        // Language selector visual logic (show only emoji when closed)
+        const langSel = document.getElementById('lang-selector');
+        const fullNames = { 'it': '🇮🇹 IT', 'en': '🇬🇧 EN', 'fr': '🇫🇷 FR', 'de': '🇩🇪 DE' };
+        const emojis = { 'it': '🇮🇹', 'en': '🇬🇧', 'fr': '🇫🇷', 'de': '🇩🇪' };
+
+        function updateLangDisplay() {
+            Array.from(langSel.options).forEach(opt => opt.text = fullNames[opt.value]);
+            langSel.options[langSel.selectedIndex].text = emojis[langSel.value];
+        }
+
+        langSel.addEventListener('focus', () => {
+            Array.from(langSel.options).forEach(opt => opt.text = fullNames[opt.value]);
+        });
+        langSel.addEventListener('blur', updateLangDisplay);
+        langSel.addEventListener('change', updateLangDisplay);
+        
+        // Initial setup
+        updateLangDisplay();
+
     </script>
     
     <!-- Cookie Banner & JS -->
