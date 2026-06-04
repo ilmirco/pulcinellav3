@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ilmirco.github.io/pulcinellav3/sitemap.xml
